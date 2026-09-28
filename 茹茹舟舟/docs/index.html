@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="茹茹舟舟">
+<meta name="theme-color" content="#FBF8F3">
+<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="88">💗</text></svg>'>
+<link rel="apple-touch-icon" href="data:image/png;base64,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AEAAWP8AABoAASAAAAAEAALA+gcA0AACAAEAACAABAACAABAAAgArH8AAA0gABAAAIAAMOQEAAIAABAACACsfwBAAyAAEAAAgABAAFj/AAAaAAEgAAAABAACQAAAAAgABID1DwCgAQQAAgAAQAAIAAQAAIAAEABY/wAAGkAAIAAAAASAAEAAAAACAAGAAAAABAACwPr3MwEAaAAEgAAAABAACAABAAAgABAA1j8AgAZAAAgAAAABIAA8gQAAABAAAgABAAAgAAQA1j8AgAYQAAgAAAABIAAQAAAAAkAAYP0DABoAASAAAAAEAAJAAAAACAAEgAAAABAACAABAAAgABAA1j8AgAZAAAgAAAABIAAQAAAAAkAAIAAAAASAAMD6BwDQAAIAAQAAIAAEAAIAABAARqAAEAAAAAIAASAAAAAEAALA+gcA0AAIAAEAACAAEAACAABAACAABAAAgAAQAAgAAAABIACw/gEANIAAQAAAAAgAAYAAAAAQAAIAAQAAIAAEgAAAABAACAABAAAgABAA1j8AgAZAAAgAAAABgAAQAAAAAgABIAAAAASAAEAAAAAIAAGAAAAAEAACAAEAACAABAACAABAAAgArH8AAA0gAAQAAIAAQAAIAAAAAYAAEAAAAAIAASAAAAAEAAJAAAAACAAEgAAAABAAAgABAAAgAAQAAgAAQAAIAAQAAIAAEAAIAAAAASAAsP4BADSAABAAAAAIAAEgAAAABAACQAAAAAgABIAAAAAQAAgAAQAAIAAQAAIAAEAAIAAEAACAABAACAAAAAEgABAAAAACQAAgAAAABIAAQAAAAAgAASAA3DkAgAAQAAIAAEAAIAAEAACAAEAACAAAAAGAABAAAAACAAEgAAAABAACQAAAAAgAAYAAAAAQAAIAAQAAIAAEAAIAAEAACAAEAACAABAACAAAAAEgAAQAAIAAQAAIAAAAAYAAEAAAAAIAASAAAAAEAAJAAAAACAAEgAAAABAAAgABAAAgAAQAAgAAQAAIAAQAAIAAEAAIAAAAASAAEAAAAAJAAGgAAADrHwEgAAAABAACQAAAAAgABIAAAAAQAAgAAQAAIAAQAAIAAEAACAAEAACAABAACAAAAAEgABAAAAACQAAgAAAABIAAQAMAAFj/AkAAAAAIAASAAAAAEAAIAAEAACAAEAACAABAACAABAAAgABAAAgAAAABIAC8ggAAABAAAgANAABg/QsABAAAgAAQAAgAAAABIAAQAAAAAkAAIAAAAAFgEAoAAQAAIAAQABoAAMD6RwAIAAAAAYAAEAAAAAIAASAAAAAEAAJAAAAACAABgAAAABAAAgANAABg/QsABAAAgAAQAAgAAAABIAAQAACAAEAAaAAAAOsfASAAAAAEAAJAAAAACAAEgAAAABAACAABAAAgABAAGgAAwPoXAAgAAAABIAAQAAAAAkAAIAAAAASAAEADAABY/wIAAQAACAAEAAIAABAACAABAAAgABAAGgAAwPpHAAgAAAABgAAQAAAAAgABoAEAAKx/AYAAAAAQAAIAAQAAIAAEAAIAAEAACAA0AACA9S8AEAAAgABAACAAAAABgADALwUAYP0jAAQAAIAAQAAIAAAAAYAA0AAAANY/AkAAAAAIAAGAAAAAEAACAA0AAGD9CwAEAACAABAACAAAAAEgANAAAID1jwBAAAAAAgABgAYAAKx/BIAAAAAQAAgAAQAAIAAQABoAAMD6RwAIAAAAAYAAEAAAAAJAAKABAACsfwGAAAAAEAACAA0AAFj/BpsAQAAAAAIAAYAGAACsfwQAAgAAEAAIAAQAACAAEAAaAADA+kcACAAAAAGAANAAAADWPwJAAAAACAABgAYAALD+BQACAABAAAgANAAAYP0jABAAAIAAQACgAQAA6x8BgAAAAAQAAgANAABY/wgABAAAIAAQABoAAMD6RwAIAAAAAYAA0AAAANa/AEAAAAAIAAGABgAAsP4FAAIAABAACAA0AABg/SMAEAAAgABAAKABAADrHwGAAAAABAACAA0AAFj/CAAEAAAgABAAGgAAwPpHAGgAAADrXwAgAAAABIAAQAMAANY/AgABAAAIAAQAGgAAsP4RAGgAAMD6RwAgAAAAAYAAQAMAANY/AgANAABY/wgABAAAIAAQAGgAAMD6RwBoAAAA618AeAUBAAAIAGNJAKABAADrHwGABgAArH8EAAIAABAACAA0AABg/SMA0AAAgPWPAEAAAAACAAGABgAArH8EABoAALD+EQAIAABAACAA0AAAgPWPAEADAID1jwBAAwAA1j8CAAEAAAgABAAaAACw/hEAaAAAwPpHAKABAADrHwGABgAArH8EAAIAABAACAA0AABg/SMA0AAAgPWPAEADAID1DwIADQAA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AAAQAAAIAADmGsBrAAgAACoN4B0ABAAAACAAAAAAAQAAAAgAAABAAAAAAAIAAAAQAAAAgAAAAAAEAAAAIAAAAAABAAAAAgAAABAAAACAAAAAAAQAAAAgAAAAAAEAAAAIAAAAQAAAAAACAAAAEAAAAIAAAAAAAQAAAAgAAABAAAAAAAIAAAAQAAAAgAAAAAAEAAAAIAAAAAABAAAACAAAAEAAAAAAAgAAAAQAAAAgAAAAAAEAAAAIAAAAQAAAAAACAAAAEAAAAIAAAAAABAAAACAAAAAAAQAAAAIAAAAQAAAAgAAAAAAEAAAAIAAAAAABAAAACAAAAEAAAAAAAgAAABAAAACAAAAAAAEAAAAIAAAAQAAAAAACAAAAEAAAAIAAAAAABAAAACAAAAAAAQAAAAgAAABAAAAAgAAAAAAEAAAAIAAAAAABAAAACAAAAEAAAAAAAgAAABAAAACAAAAAAAQAAAAgAAAAQAB4BQAAEAAAAIAAAAAABAAAACAAAAAAAQAAAAgAAABAAAAAAAIAAAAQAAAAgAAAAAAEAAAACAAAAEAAAAAAAgAAABAAAACAAAAAAAQAAAAgAAAAAAEAAAAIAAAAQAAAAAACAAAABAAAACAAAAAAAQAAAAgAAABAAAAAAAIAAAAQAAAAgAAAAAAEAAAAIAAAAAABAAAAAgAAABAAAACAAAAAAAQAAAAgAAAAAAEAAAAIAAAAQAAAAAACAAAAEAAAAIAAAAAAAQAAAAgAAABAAAAAAAIAAAAQAAAAgAAAAAAEAAAAIAAAAAABAAAACAAAAEAAAACAAPAEAAAgAAAAAAEAAAAIAAAAQAAAAAACAAAAEAAAAIAAAAAABAAAACAAAACAD95IJnAhcRsnmAAAAABJRU5ErkJggg==">
+<title>茹茹舟舟</title>
+<style>
+  :root{
+    --bg:#FBF8F3;
+    --card:#FFFFFF;
+    --accent:#F4E2CC;
+    --accent2:#F6D8D3;
+    --text:#3B3835;
+    --secondary:#8A857E;
+    --radius:20px;
+    --small:14px;
+    --shadow:0 3px 8px rgba(0,0,0,.05);
+  }
+  *{ margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  html,body{ height:100%; }
+  body{
+    font-family:-apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, sans-serif;
+    background:#EDE9E2;
+    color:var(--text);
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* 手机框（桌面居中） */
+  #phone{
+    position:relative;
+    max-width:430px;
+    margin:0 auto;
+    min-height:100vh;
+    background:var(--bg);
+    overflow-x:hidden;
+  }
+  @media (min-width:480px){
+    #phone{ box-shadow:0 0 40px rgba(0,0,0,.12); }
+  }
+
+  #views{ padding:16px 16px 120px; }
+
+  /* 标题 */
+  .page-title{ font-size:24px; font-weight:800; letter-spacing:.5px; }
+  .page-sub{ font-size:13px; color:var(--secondary); margin-top:2px; }
+
+  /* 统计 */
+  .stats{ display:flex; gap:12px; margin:14px 0 0; }
+  .stat{
+    flex:1; background:var(--card); border-radius:var(--radius);
+    box-shadow:var(--shadow); padding:16px 6px; text-align:center;
+  }
+  .stat .v{ font-size:24px; font-weight:800; }
+  .stat .t{ font-size:12px; color:var(--secondary); margin-top:2px; }
+  .stat .s{ font-size:11px; color:var(--secondary); opacity:.8; margin-top:2px; }
+
+  /* 纪念日 */
+  .anniv{ display:flex; gap:10px; overflow-x:auto; margin-top:14px; padding-bottom:2px; scrollbar-width:none; }
+  .anniv::-webkit-scrollbar{ display:none; }
+  .anniv .item{
+    flex:0 0 auto; background:rgba(246,216,211,.55); border-radius:var(--small);
+    padding:10px 16px; text-align:center;
+  }
+  .anniv .item .n{ font-size:13px; font-weight:700; }
+  .anniv .item .d{ font-size:12px; color:var(--secondary); margin-top:2px; }
+
+  /* 标签筛选 */
+  .tagfilter{ display:flex; gap:8px; overflow-x:auto; margin-top:14px; padding-bottom:2px; scrollbar-width:none; }
+  .tagfilter::-webkit-scrollbar{ display:none; }
+  .chip{
+    flex:0 0 auto; font-size:13px; font-weight:500; padding:7px 14px; border-radius:999px;
+    background:rgba(0,0,0,.04); cursor:pointer; user-select:none; transition:background .18s;
+  }
+  .chip.on{ background:var(--accent); }
+
+  /* 记录列表 */
+  .records{ display:flex; flex-direction:column; gap:12px; margin-top:14px; }
+  .record{
+    background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow);
+    padding:12px; display:flex; gap:14px; align-items:center; cursor:pointer;
+    transition:transform .15s ease;
+  }
+  .record:active{ transform:scale(.985); }
+  .record .thumb{
+    width:72px; height:72px; border-radius:var(--small); overflow:hidden; flex:0 0 auto;
+    display:flex; align-items:center; justify-content:center; font-size:30px;
+    background:rgba(244,226,204,.55);
+  }
+  .record .thumb img{ width:100%; height:100%; object-fit:cover; }
+  .record .info{ flex:1; min-width:0; }
+  .record .info .date{ font-size:15px; font-weight:700; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .record .info .loc{ font-size:13px; color:var(--secondary); margin-top:4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .record .info .score{ font-size:13px; margin-top:4px; }
+  .record .info .tags{ display:flex; gap:6px; margin-top:5px; flex-wrap:wrap; }
+  .record .info .tags span{ font-size:11px; color:var(--secondary); background:rgba(0,0,0,.04); padding:2px 8px; border-radius:999px; }
+  .record .chev{ color:var(--secondary); opacity:.5; font-size:18px; }
+
+  /* 空状态 */
+  .empty{ text-align:center; padding:40px 20px; }
+  .empty .ico{ font-size:46px; }
+  .empty .t{ font-size:17px; font-weight:700; margin-top:10px; }
+  .empty .s{ font-size:13px; color:var(--secondary); margin-top:6px; }
+
+  /* 悬浮按钮 */
+  #fab{
+    position:fixed; right:max(20px, calc(50% - 195px)); bottom:96px;
+    background:var(--accent); color:var(--text); border:none; font-size:15px; font-weight:700;
+    padding:15px 22px; border-radius:999px; cursor:pointer; z-index:30;
+    box-shadow:0 4px 10px rgba(244,226,204,.8); white-space:nowrap;
+  }
+
+  /* 底部标签栏 */
+  #tabbar{
+    position:fixed; bottom:0; left:50%; transform:translateX(-50%);
+    width:100%; max-width:430px; background:rgba(251,248,243,.92);
+    backdrop-filter:blur(12px); border-top:1px solid rgba(0,0,0,.05);
+    display:flex; z-index:25; padding-bottom:env(safe-area-inset-bottom);
+  }
+  #tabbar .tab{
+    flex:1; text-align:center; padding:10px 0 8px; cursor:pointer; color:var(--secondary); font-size:12px;
+  }
+  #tabbar .tab .ic{ font-size:21px; display:block; margin-bottom:1px; }
+  #tabbar .tab.on{ color:var(--text); font-weight:700; }
+
+  /* 通用卡片/区块 */
+  .section{ background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow); padding:16px; margin-top:14px; }
+  .section h3{ font-size:14px; color:var(--secondary); font-weight:600; margin-bottom:10px; }
+
+  /* 设置行 */
+  .row{ display:flex; align-items:center; padding:12px 0; border-bottom:1px solid rgba(0,0,0,.04); gap:10px; }
+  .row:last-child{ border-bottom:none; }
+  .row .grow{ flex:1; min-width:0; }
+  .row .lbl{ font-size:15px; }
+  .row .sub{ font-size:12px; color:var(--secondary); margin-top:2px; }
+
+  /* 标签拖动排序 */
+  .drag-row{ touch-action:none; user-select:none; -webkit-user-select:none; cursor:grab; transition:background .15s, transform .15s; }
+  .drag-row .grip{ color:var(--secondary); font-size:18px; margin-right:2px; cursor:grab; }
+  .drag-row.dragging{ background:var(--accent); border-radius:12px; box-shadow:0 6px 16px rgba(0,0,0,.12); transform:scale(1.03); }
+  .btn{
+    background:var(--accent); color:var(--text); border:none; font-size:14px; font-weight:600;
+    padding:10px 16px; border-radius:999px; cursor:pointer;
+  }
+  .btn.ghost{ background:rgba(0,0,0,.04); }
+  .btn.danger{ background:var(--accent2); }
+  .btn.small{ padding:6px 12px; font-size:12px; }
+  input[type=text], input[type=password], input[type=datetime-local], input[type=date], textarea, select{
+    width:100%; font-size:15px; padding:11px 12px; border:1px solid rgba(0,0,0,.08);
+    border-radius:12px; background:rgba(0,0,0,.03); color:var(--text); font-family:inherit; outline:none;
+  }
+  textarea{ min-height:90px; resize:vertical; }
+
+  /* 评分滑块 */
+  .rating{ text-align:center; padding:6px 0; }
+  .rating .emoji{ font-size:64px; display:inline-block; }
+  .rating .emoji.pop{ animation:emojiPop .5s cubic-bezier(.34,1.56,.64,1); }
+  @keyframes emojiPop{ 0%{ transform:scale(.2); opacity:.4; } 55%{ transform:scale(1.5); opacity:1; } 78%{ transform:scale(.85); } 100%{ transform:scale(1); } }
+  .rating .val{ font-size:20px; font-weight:800; margin-top:6px; }
+  input[type=range]{ -webkit-appearance:none; appearance:none; width:100%; height:12px; border-radius:999px; background:rgba(0,0,0,.06); outline:none; margin:18px 0 8px; }
+  input[type=range]::-webkit-slider-thumb{
+    -webkit-appearance:none; appearance:none; width:30px; height:30px; border-radius:50%;
+    background:#fff; box-shadow:0 1px 4px rgba(0,0,0,.2); cursor:pointer; border:none;
+  }
+  .rating .labels{ display:flex; justify-content:space-between; font-size:12px; color:var(--secondary); }
+
+  /* 彩带/纸屑炸开 */
+  .confetti{ position:fixed; width:8px; height:8px; border-radius:50%; pointer-events:none; z-index:90;
+    animation:confettiFly .72s ease-out forwards; }
+  @keyframes confettiFly{
+    0%{ transform:translate(-50%,-50%) scale(1) rotate(0deg); opacity:1; }
+    100%{ transform:translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(.2) rotate(220deg); opacity:0; }
+  }
+
+  /* 弹层（底部抽屉） */
+  .overlay{ position:fixed; inset:0; background:rgba(0,0,0,.35); display:flex; align-items:flex-end; justify-content:center; z-index:40; }
+  .overlay .sheet{
+    width:100%; max-width:430px; background:var(--bg); border-radius:24px 24px 0 0;
+    max-height:92vh; overflow-y:auto; padding:20px 20px calc(24px + env(safe-area-inset-bottom));
+  }
+  .overlay.hidden{ display:none; }
+  .sheet .head{ display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; }
+  .sheet .head .t{ font-size:18px; font-weight:800; }
+  .field{ margin-bottom:14px; }
+  .field label{ display:block; font-size:13px; color:var(--secondary); margin-bottom:6px; }
+
+  /* 照片选择 */
+  .photo-box{ display:flex; gap:12px; align-items:center; }
+  .photo-box .pv{
+    width:72px; height:72px; border-radius:12px; overflow:hidden; flex:0 0 auto;
+    background:rgba(244,226,204,.55); display:flex; align-items:center; justify-content:center; font-size:28px; cursor:pointer;
+  }
+  .photo-box .pv img{ width:100%; height:100%; object-fit:cover; }
+
+  /* 锁屏 */
+  .lock{ position:fixed; inset:0; background:var(--bg); z-index:60; display:flex; align-items:center; justify-content:center; }
+  .lock.hidden{ display:none; }
+  .lock .box{ text-align:center; padding:0 40px; width:100%; max-width:430px; }
+  .lock .box .ic{ font-size:60px; }
+  .lock .box .t{ font-size:24px; font-weight:800; margin-top:10px; }
+  .lock .box .s{ font-size:14px; color:var(--secondary); margin:8px 0 20px; }
+  .lock .box input{ text-align:center; letter-spacing:8px; font-size:22px; margin-bottom:14px; }
+
+  /* 通用确认弹窗 */
+  .confirm-overlay{ position:fixed; inset:0; background:rgba(0,0,0,.35); display:flex; align-items:center; justify-content:center; z-index:80; padding:30px; }
+  .confirm-overlay.hidden{ display:none; }
+  .confirm-card{ background:var(--card); border-radius:20px; padding:24px; width:100%; max-width:340px; text-align:center; box-shadow:0 10px 40px rgba(0,0,0,.2); }
+  .confirm-card .msg{ font-size:15px; line-height:1.6; margin-bottom:20px; white-space:pre-line; }
+  .confirm-card .btns{ display:flex; gap:10px; }
+  .confirm-card .btns .btn{ flex:1; padding:12px; }
+
+  /* 日历 */
+  .cal-head{ display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; }
+  .cal-head .m{ font-size:17px; font-weight:800; }
+  .cal-head button{ background:none; border:none; font-size:18px; cursor:pointer; color:var(--text); padding:4px 10px; }
+  .cal-week, .cal-grid{ display:grid; grid-template-columns:repeat(7,1fr); }
+  .cal-week span{ text-align:center; font-size:12px; color:var(--secondary); font-weight:600; padding:4px 0; }
+  .cal-day{
+    aspect-ratio:1; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    font-size:15px; cursor:pointer; border-radius:50%; position:relative;
+  }
+  .cal-day .num{ width:32px; height:32px; display:flex; align-items:center; justify-content:center; border-radius:50%; }
+  .cal-day.sel .num{ background:var(--text); color:#fff; }
+  .cal-day.today .num{ font-weight:800; }
+  .cal-day .dot{ width:6px; height:6px; border-radius:50%; background:var(--accent2); margin-top:2px; }
+  .cal-day .dot.off{ background:transparent; }
+  .cal-day.blank{ cursor:default; }
+  .cal-today-label{ font-size:15px; font-weight:700; color:var(--secondary); margin:16px 0 10px; }
+
+  .hidden{ display:none !important; }
+  .muted{ color:var(--secondary); }
+  .rank{ display:flex; align-items:center; gap:10px; padding:8px 0; font-size:15px; }
+  .rank .n{ color:var(--secondary); }
+</style>
+</head>
+<body>
+<div id="phone">
+
+  <!-- 内容视图 -->
+  <div id="views">
+    <section id="view-home"></section>
+    <section id="view-calendar" class="hidden"></section>
+    <section id="view-settings" class="hidden"></section>
+  </div>
+
+  <!-- 底部标签栏 -->
+  <nav id="tabbar">
+    <div class="tab on" data-tab="home" onclick="switchTab('home')"><span class="ic">💗</span>Doi</div>
+    <div class="tab" data-tab="calendar" onclick="switchTab('calendar')"><span class="ic">📅</span>日历</div>
+    <div class="tab" data-tab="settings" onclick="switchTab('settings')"><span class="ic">⚙️</span>设置</div>
+  </nav>
+
+  <!-- 悬浮打卡按钮 -->
+  <button id="fab" onclick="openAdd()">＋ 记一次Doi</button>
+
+  <!-- 打卡/编辑 抽屉 -->
+  <div id="modal" class="overlay hidden">
+    <div class="sheet">
+      <div class="head"><span class="t" id="modalTitle">记一次Doi</span><button class="btn ghost small" onclick="closeAdd()">取消</button></div>
+      <div class="field"><label>Doi时间</label><input type="datetime-local" id="f_date"></div>
+      <div class="field"><label>封面照片（选一张）</label>
+        <div class="photo-box">
+          <div class="pv" id="f_photoPreview" onclick="document.getElementById('f_photoFile').click()">💗</div>
+          <div class="grow">
+            <button class="btn ghost small" onclick="document.getElementById('f_photoFile').click()">从相册选择</button>
+            <button class="btn danger small" onclick="removePhoto()">移除</button>
+          </div>
+        </div>
+        <input type="file" id="f_photoFile" accept="image/*" class="hidden" onchange="pickPhoto(this)">
+      </div>
+      <div class="field"><label>打分</label>
+        <div class="rating">
+          <div class="emoji" id="ratingEmoji">😐</div>
+          <div class="val" id="ratingValue">5 分</div>
+          <input type="range" id="ratingInput" min="1" max="10" step="1" value="5" oninput="onRating(this)">
+          <div class="labels"><span>不开心</span><span>平静</span><span>超开心</span></div>
+        </div>
+      </div>
+      <div class="field"><label>地点</label>
+        <div class="photo-box">
+          <input type="text" id="f_location" placeholder="手动输入地点">
+          <button class="btn ghost small" onclick="locate()">定位</button>
+        </div>
+      </div>
+      <div class="field"><label>标签</label>
+        <div id="f_tags" class="tagfilter" style="flex-wrap:wrap;overflow:visible;"></div>
+        <div class="photo-box" style="margin-top:10px;">
+          <input type="text" id="f_newtag" placeholder="自定义标签">
+          <button class="btn small" onclick="addTagFromModal()">添加</button>
+        </div>
+      </div>
+      <div class="field"><label>备注</label><textarea id="f_note" placeholder="记下这次Doi的心情和小事…"></textarea></div>
+      <button class="btn" style="width:100%;padding:15px;font-size:16px;" onclick="saveRecord()">保存</button>
+    </div>
+  </div>
+
+  <!-- 详情 抽屉 -->
+  <div id="detail" class="overlay hidden">
+    <div class="sheet">
+      <div class="head"><span class="t">Doi详情</span><button class="btn ghost small" onclick="closeDetail()">关闭</button></div>
+      <div id="detailBody"></div>
+    </div>
+  </div>
+
+  <!-- 锁屏 -->
+  <div id="lock" class="lock hidden">
+    <div class="box">
+      <div class="ic">🔒</div>
+      <div class="t">茹茹舟舟</div>
+      <div class="s">输入 4 位密码解锁</div>
+      <input type="password" id="lockPin" maxlength="4" inputmode="numeric" placeholder="••••" onkeydown="if(event.key==='Enter')tryUnlock()">
+      <button class="btn" style="width:100%;padding:14px;" onclick="tryUnlock()">解锁</button>
+    </div>
+  </div>
+
+  <!-- 通用确认弹窗 -->
+  <div id="confirmDialog" class="confirm-overlay hidden">
+    <div class="confirm-card">
+      <div class="msg" id="confirmMsg"></div>
+      <div class="btns">
+        <button class="btn ghost" id="confirmCancel" onclick="confirmCancel()">取消</button>
+        <button class="btn" id="confirmOk" onclick="confirmOk()">确定</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+/* ============ 数据与状态 ============ */
+const PRESET_TAGS = ["美食探店","看电影","短途旅行","居家Doi","散步逛街"];
+const EMOJIS = ["😡","😠","🙁","😕","😐","🙂","😊","😄","😁","😍"];
+const KEY = "ruruZhouzhou_v1";
+
+let state = { records:[], anniversaries:[], tags:[...PRESET_TAGS], settings:{ lockEnabled:false, pin:"" } };
+let currentTag = null;      // 首页筛选标签
+let currentTab = "home";
+let editingId = null;       // 编辑中的记录 id（null=新增）
+let tempPhoto = null;       // 打卡页选中的照片 dataURL
+let tempTags = new Set();   // 打卡页选中的标签
+let calYear = 0, calMonth = 0, calSelected = null;
+
+function uid(){ return Date.now().toString(36) + Math.random().toString(36).slice(2,7); }
+
+function loadState(){
+  try{
+    const raw = localStorage.getItem(KEY);
+    if(raw){ const d = JSON.parse(raw); state = Object.assign(state, d); state.settings = state.settings || {lockEnabled:false,pin:""}; }
+  }catch(e){}
+  // 兼容旧数据：老版本的自定义标签合并进 tags
+  if(!Array.isArray(state.tags) || state.tags.length === 0){
+    state.tags = [...PRESET_TAGS, ...(state.customTags || [])];
+  }
+}
+function saveState(){
+  try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){ alert("存储空间不足：照片较大时请减少照片或导出备份后清理记录。"); }
+}
+
+/* ============ 工具 ============ */
+function pad(n){ return String(n).padStart(2,"0"); }
+function fmtDateTime(iso){ const d=new Date(iso); return d.getFullYear()+"年"+(d.getMonth()+1)+"月"+d.getDate()+"日 "+pad(d.getHours())+":"+pad(d.getMinutes()); }
+function fmtDate(iso){ const d=new Date(iso); return d.getFullYear()+"年"+(d.getMonth()+1)+"月"+d.getDate()+"日"; }
+function toLocalInput(d){ return d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate())+"T"+pad(d.getHours())+":"+pad(d.getMinutes()); }
+function ratingEmoji(v){ return EMOJIS[Math.max(0,Math.min(v,10)-1)]; }
+function allTags(){
+  const s = [...state.tags];
+  state.records.forEach(r => (r.tags||[]).forEach(t => { if(!s.includes(t)) s.push(t); }));
+  return s;
+}
+function monthCount(){
+  const now=new Date(), y=now.getFullYear(), m=now.getMonth();
+  return state.records.filter(r=>{ const d=new Date(r.date); return d.getFullYear()===y && d.getMonth()===m; }).length;
+}
+function avgRating(){ return state.records.length ? state.records.reduce((s,r)=>s+r.rating,0)/state.records.length : 0; }
+function daysSince(dateStr){ const d=new Date(dateStr+"T00:00:00"); const t=new Date(); t.setHours(0,0,0,0); return Math.max(0, Math.floor((t-d)/86400000)); }
+function sortedRecords(){ return [...state.records].sort((a,b)=> new Date(b.date) - new Date(a.date)); }
+
+/* ============ 视图切换 ============ */
+function switchTab(tab){
+  currentTab = tab;
+  ["home","calendar","settings"].forEach(t => document.getElementById("view-"+t).classList.toggle("hidden", t!==tab));
+  document.querySelectorAll("#tabbar .tab").forEach(el => el.classList.toggle("on", el.dataset.tab===tab));
+  document.getElementById("fab").classList.toggle("hidden", tab!=="home");
+  if(tab==="home") renderHome();
+  if(tab==="calendar") renderCalendar();
+  if(tab==="settings") renderSettings();
+}
+
+/* ============ 首页 ============ */
+function renderHome(){
+  const el = document.getElementById("view-home");
+  const recs = currentTag ? sortedRecords().filter(r => (r.tags||[]).includes(currentTag)) : sortedRecords();
+  const anniv = state.anniversaries.map(a =>
+    `<div class="item"><div>💗</div><div class="n">${esc(a.name)}</div><div class="d">第 ${daysSince(a.date)} 天</div></div>`
+  ).join("");
+  const tagChips = `<span class="chip ${!currentTag?'on':''}" data-tag="" onclick="setFilter(this)">全部</span>` +
+    allTags().map(t => `<span class="chip ${currentTag===t?'on':''}" data-tag="${esc(t)}" onclick="setFilter(this)">${esc(t)}</span>`).join("");
+  const list = recs.length ? recs.map(r => recordCard(r)).join("") :
+    `<div class="empty"><div class="ico">🥰</div><div class="t">还没有Doi记录</div><div class="s">点右下角"记一次Doi"，把你们的第一次Doi留下来吧</div></div>`;
+
+  el.innerHTML = `
+    <div class="page-title">茹茹舟舟</div>
+    <div class="page-sub">你们的小小回忆本 💗</div>
+    <div class="stats">
+      <div class="stat"><div class="v">${state.records.length}</div><div class="t">总Doi</div><div class="s">次</div></div>
+      <div class="stat"><div class="v">${monthCount()}</div><div class="t">本月</div><div class="s">次</div></div>
+      <div class="stat"><div class="v">${avgRating().toFixed(1)}</div><div class="t">平均分</div><div class="s">满分 10</div></div>
+    </div>
+    ${anniv ? `<div class="anniv">${anniv}</div>` : ""}
+    <div class="tagfilter">${tagChips}</div>
+    <div class="records">${list}</div>`;
+}
+function setFilter(el){ currentTag = el.dataset.tag || null; renderHome(); }
+function recordCard(r){
+  const thumb = r.photo ? `<img src="${r.photo}" alt="">` : "💗";
+  const tags = (r.tags||[]).slice(0,3).map(t => `<span>${esc(t)}</span>`).join("");
+  return `<div class="record" onclick="openDetail('${r.id}')">
+    <div class="thumb">${thumb}</div>
+    <div class="info">
+      <div class="date">${fmtDateTime(r.date)}</div>
+      ${r.location ? `<div class="loc">📍 ${esc(r.location)}</div>` : ""}
+      <div class="score">${ratingEmoji(r.rating)} ${r.rating} 分</div>
+      ${tags ? `<div class="tags">${tags}</div>` : ""}
+    </div>
+    <div class="chev">›</div>
+  </div>`;
+}
+
+/* ============ 打卡 / 编辑 ============ */
+function openAdd(record){
+  editingId = record ? record.id : null;
+  tempPhoto = record ? (record.photo || null) : null;
+  tempTags = new Set(record ? (record.tags||[]) : []);
+  document.getElementById("modalTitle").textContent = record ? "编辑Doi" : "记一次Doi";
+  document.getElementById("f_date").value = toLocalInput(record ? new Date(record.date) : new Date());
+  document.getElementById("f_location").value = record ? (record.location||"") : "";
+  document.getElementById("f_note").value = record ? (record.note||"") : "";
+  document.getElementById("ratingInput").value = record ? (record.rating||5) : 5;
+  document.getElementById("ratingValue").textContent = (record ? record.rating : 5) + " 分";
+  document.getElementById("ratingEmoji").textContent = ratingEmoji(record ? record.rating : 5);
+  updateSliderFill();
+  renderPhotoPreview();
+  renderTagPicker();
+  document.getElementById("modal").classList.remove("hidden");
+}
+function closeAdd(){ document.getElementById("modal").classList.add("hidden"); }
+function onRating(el){
+  const v = +el.value;
+  document.getElementById("ratingValue").textContent = v + " 分";
+  const em = document.getElementById("ratingEmoji");
+  em.textContent = ratingEmoji(v);
+  em.classList.remove("pop"); void em.offsetWidth; em.classList.add("pop");
+  confettiBurst(em);
+  updateSliderFill();
+}
+function confettiBurst(anchor){
+  const rect = anchor.getBoundingClientRect();
+  const cx = rect.left + rect.width/2;
+  const cy = rect.top + rect.height/2;
+  const colors = ["#F6D8D3","#F4E2CC","#F9C6BE","#FADCE0","#E8B4A0","#FCE9D8","#F5A8A0"];
+  for(let i=0;i<20;i++){
+    const p = document.createElement("div");
+    p.className = "confetti";
+    p.style.left = cx + "px";
+    p.style.top = cy + "px";
+    p.style.background = colors[i % colors.length];
+    const ang = Math.random()*Math.PI*2;
+    const dist = 45 + Math.random()*70;
+    p.style.setProperty("--dx", (Math.cos(ang)*dist).toFixed(0)+"px");
+    p.style.setProperty("--dy", (Math.sin(ang)*dist).toFixed(0)+"px");
+    const s = (5 + Math.random()*7).toFixed(0)+"px";
+    p.style.width = s; p.style.height = s;
+    document.body.appendChild(p);
+    setTimeout(() => p.remove(), 720);
+  }
+}
+function updateSliderFill(){
+  const el = document.getElementById("ratingInput"); const v = +el.value; const p = (v-1)/9*100;
+  el.style.background = `linear-gradient(90deg, var(--accent) ${p}%, rgba(0,0,0,.06) ${p}%)`;
+}
+function pickPhoto(input){
+  const file = input.files && input.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    const img = new Image();
+    img.onload = () => {
+      const max = 800; let w = img.width, h = img.height;
+      const s = Math.min(1, max / Math.max(w,h));
+      w = Math.round(w*s); h = Math.round(h*s);
+      const c = document.createElement("canvas"); c.width = w; c.height = h;
+      c.getContext("2d").drawImage(img,0,0,w,h);
+      tempPhoto = c.toDataURL("image/jpeg", 0.72);
+      renderPhotoPreview();
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+  input.value = "";
+}
+function removePhoto(){ tempPhoto = null; renderPhotoPreview(); }
+function renderPhotoPreview(){
+  const pv = document.getElementById("f_photoPreview");
+  pv.innerHTML = tempPhoto ? `<img src="${tempPhoto}" alt="">` : "💗";
+}
+function renderTagPicker(){
+  const box = document.getElementById("f_tags");
+  box.innerHTML = allTags().map(t =>
+    `<span class="chip ${tempTags.has(t)?'on':''}" data-tag="${esc(t)}" onclick="toggleTag(this)">${esc(t)}</span>`
+  ).join("");
+}
+function toggleTag(el){ const t = el.dataset.tag; tempTags.has(t) ? tempTags.delete(t) : tempTags.add(t); renderTagPicker(); }
+function addTagFromModal(){
+  const inp = document.getElementById("f_newtag");
+  const t = inp.value.trim();
+  if(t && !allTags().includes(t)){ state.tags.push(t); saveState(); tempTags.add(t); }
+  inp.value = ""; renderTagPicker();
+}
+function locate(){
+  const el = document.getElementById("f_location");
+  if(!navigator.geolocation){ el.value = "当前浏览器不支持定位"; return; }
+  el.value = "定位中…";
+  navigator.geolocation.getCurrentPosition(async pos => {
+    const lat = pos.coords.latitude, lon = pos.coords.longitude;
+    try{
+      const r = await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=zh`);
+      const j = await r.json();
+      el.value = j.city || j.locality || j.principalSubdivision || `${lat.toFixed(4)},${lon.toFixed(4)}`;
+    }catch(e){ el.value = `${lat.toFixed(4)}, ${lon.toFixed(4)}`; }
+  }, () => { el.value = "定位失败，请手动输入"; }, { enableHighAccuracy:false, timeout:8000 });
+}
+function saveRecord(){
+  const loc = document.getElementById("f_location").value.trim();
+  if(!loc){
+    showConfirm(
+      "定位未成功，是否手动添加位置？",
+      "去手动填写",
+      "不填，直接保存",
+      () => document.getElementById("f_location").focus(),
+      () => doSave()
+    );
+    return;
+  }
+  doSave();
+}
+function doSave(){
+  const dateVal = document.getElementById("f_date").value;
+  const rec = {
+    id: editingId || uid(),
+    date: dateVal ? new Date(dateVal).toISOString() : new Date().toISOString(),
+    location: document.getElementById("f_location").value.trim(),
+    rating: +document.getElementById("ratingInput").value,
+    note: document.getElementById("f_note").value,
+    photo: tempPhoto || null,
+    tags: [...tempTags]
+  };
+  if(editingId){ const i = state.records.findIndex(r=>r.id===editingId); if(i>=0) state.records[i] = rec; }
+  else { state.records.push(rec); }
+  saveState(); closeAdd(); renderAll();
+}
+
+/* ============ 详情 ============ */
+function openDetail(id){
+  const r = state.records.find(x => x.id === id);
+  if(!r) return;
+  const tags = (r.tags||[]).map(t => `<span class="chip">${esc(t)}</span>`).join("");
+  document.getElementById("detailBody").innerHTML = `
+    ${r.photo ? `<div style="border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);margin-bottom:14px;"><img src="${r.photo}" style="width:100%;display:block;" alt=""></div>` : ""}
+    <div style="text-align:center;background:rgba(244,226,204,.55);border-radius:var(--radius);padding:20px;margin-bottom:14px;">
+      <div style="font-size:52px;">${ratingEmoji(r.rating)}</div>
+      <div style="font-size:18px;font-weight:800;margin-top:6px;">${r.rating} 分</div>
+    </div>
+    <div class="section" style="margin-top:0;">
+      <div class="row"><span>📅</span><div class="grow">${fmtDateTime(r.date)}</div></div>
+      ${r.location ? `<div class="row"><span>📍</span><div class="grow">${esc(r.location)}</div></div>` : ""}
+      ${tags ? `<div class="row"><span>🏷️</span><div class="grow" style="display:flex;gap:6px;flex-wrap:wrap;">${tags}</div></div>` : ""}
+    </div>
+    ${r.note ? `<div class="section"><h3>备注</h3><div style="font-size:15px;line-height:1.7;white-space:pre-wrap;">${esc(r.note)}</div></div>` : ""}
+    <div class="photo-box" style="margin-top:16px;">
+      <button class="btn" style="flex:1;" onclick="editFromDetail('${r.id}')">编辑</button>
+      <button class="btn danger" style="flex:1;" onclick="deleteFromDetail('${r.id}')">删除</button>
+    </div>`;
+  document.getElementById("detail").classList.remove("hidden");
+}
+function closeDetail(){ document.getElementById("detail").classList.add("hidden"); }
+function editFromDetail(id){ closeDetail(); const r = state.records.find(x=>x.id===id); openAdd(r); }
+function deleteFromDetail(id){
+  if(!confirm("确定删除这条记录吗？照片也会一起删除")) return;
+  state.records = state.records.filter(r => r.id !== id);
+  saveState(); closeDetail(); renderAll();
+}
+
+/* ============ 日历 ============ */
+function renderCalendar(){
+  const el = document.getElementById("view-calendar");
+  if(!calYear){ const n = new Date(); calYear = n.getFullYear(); calMonth = n.getMonth(); }
+  const first = new Date(calYear, calMonth, 1);
+  const daysInMonth = new Date(calYear, calMonth+1, 0).getDate();
+  const leading = (first.getDay() + 6) % 7; // 周一起始
+  let cells = "";
+  for(let i=0;i<leading;i++) cells += `<div class="cal-day blank"></div>`;
+  for(let d=1; d<=daysInMonth; d++){
+    const date = new Date(calYear, calMonth, d);
+    const ds = `${calYear}-${pad(calMonth+1)}-${pad(d)}`;
+    const has = state.records.some(r => { const x=new Date(r.date); return x.getFullYear()===calYear && x.getMonth()===calMonth && x.getDate()===d; });
+    const today = new Date(); const isToday = today.getFullYear()===calYear && today.getMonth()===calMonth && today.getDate()===d;
+    const isSel = calSelected === ds;
+    cells += `<div class="cal-day ${isToday?'today':''} ${isSel?'sel':''}" data-date="${ds}" onclick="selectDay(this)">
+      <div class="num">${d}</div><div class="dot ${has?'':'off'}"></div>
+    </div>`;
+  }
+  const dayRecs = calSelected ? sortedRecords().filter(r => { const x=new Date(r.date); return `${x.getFullYear()}-${pad(x.getMonth()+1)}-${pad(x.getDate())}`===calSelected; }) : [];
+  el.innerHTML = `
+    <div class="page-title">日历</div>
+    <div class="section" style="margin-top:14px;">
+      <div class="cal-head">
+        <button onclick="changeMonth(-1)">‹</button>
+        <span class="m">${calYear}年 ${calMonth+1}月</span>
+        <button onclick="changeMonth(1)">›</button>
+      </div>
+      <div class="cal-week"><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span></div>
+      <div class="cal-grid">${cells}</div>
+    </div>
+    ${calSelected ? `<div class="cal-today-label">${fmtDate(calSelected+"T00:00:00")} 的Doi</div>
+      ${dayRecs.length ? `<div class="records" style="margin-top:10px;">${dayRecs.map(recordCard).join("")}</div>` :
+        `<div class="empty"><div class="ico">🫧</div><div class="t">这一天没有Doi</div><div class="s">去记一笔吧</div></div>`}` : ""}`;
+}
+function changeMonth(d){
+  calMonth += d; if(calMonth<0){ calMonth=11; calYear--; } if(calMonth>11){ calMonth=0; calYear++; }
+  calSelected = null; renderCalendar();
+}
+function selectDay(el){ calSelected = el.dataset.date; renderCalendar(); }
+
+/* ============ 设置 ============ */
+function renderSettings(){
+  const el = document.getElementById("view-settings");
+  const anniv = state.anniversaries.map(a =>
+    `<div class="row"><span>💗</span><div class="grow"><div class="lbl">${esc(a.name)}</div><div class="sub">第 ${daysSince(a.date)} 天</div></div><div class="muted" style="font-size:12px;">${fmtDate(a.date+"T00:00:00")}</div><button class="btn ghost small" onclick="deleteAnniversary('${a.id}')">删除</button></div>`
+  ).join("");
+  const tags = tagManageHTML();
+  const tops = topLocations();
+  const rank = tops.length ? tops.map((x,i) => `<div class="rank"><span>${["🥇","🥈","🥉"][i]||"💗"}</span><span class="grow">${esc(x.name)}</span><span class="n">${x.count} 次</span></div>`).join("") : `<div class="muted">还没有记录</div>`;
+
+  el.innerHTML = `
+    <div class="page-title">设置</div>
+    <div class="section"><h3>隐私</h3>
+      <div class="row"><span>🔒</span><div class="grow"><div class="lbl">密码锁</div><div class="sub">${state.settings.lockEnabled ? "已开启（4 位数字）" : "开启后打开需输入密码"}</div></div><button class="btn ${state.settings.lockEnabled?'danger':'ghost'} small" onclick="toggleLock()">${state.settings.lockEnabled?"关闭":"开启"}</button></div>
+    </div>
+    <div class="section"><h3>纪念日</h3>${anniv || `<div class="muted" style="padding:6px 0;">还没有纪念日</div>`}
+      <div class="photo-box" style="margin-top:10px;">
+        <input type="text" id="a_name" placeholder="例如：在一起的日子">
+        <input type="date" id="a_date">
+        <button class="btn small" onclick="addAnniversary()">添加</button>
+      </div>
+    </div>
+    <div class="section"><h3>标签管理</h3><div id="tagManageBox">${tags}</div>
+      <div class="muted" style="font-size:12px;margin:6px 0 10px;">长按 ≡ 上下拖动可排序，点「删除」可移除（含预设标签）</div>
+      <div class="photo-box">
+        <input type="text" id="c_tag" placeholder="添加自定义标签">
+        <button class="btn small" onclick="addCustomTag()">添加</button>
+      </div>
+    </div>
+    <div class="section"><h3>数据备份</h3>
+      <div class="row"><span>📤</span><div class="grow"><div class="lbl">导出备份</div><div class="sub">文字 + 照片全包含，存成 JSON 文件</div></div><button class="btn small" onclick="exportBackup()">导出</button></div>
+      <div class="row"><span>📥</span><div class="grow"><div class="lbl">从备份恢复</div><div class="sub">会覆盖当前数据</div></div><button class="btn small" onclick="document.getElementById('importFile').click()">导入</button></div>
+      <input type="file" id="importFile" accept=".json,application/json" class="hidden" onchange="importBackup(this)">
+    </div>
+    <div class="section"><h3>最常去的Doi地点</h3>${rank}</div>
+    <div class="section"><h3>关于</h3><div class="row"><div class="grow">版本</div><span class="muted">1.0.0 · 网页预览版</span></div></div>`;
+}
+function topLocations(){
+  const m = {};
+  state.records.forEach(r => { if(r.location){ m[r.location] = (m[r.location]||0)+1; } });
+  return Object.entries(m).sort((a,b)=>b[1]-a[1]).slice(0,5).map(([name,count])=>({name,count}));
+}
+function addAnniversary(){
+  const name = document.getElementById("a_name").value.trim();
+  const date = document.getElementById("a_date").value;
+  if(!date){ alert("请选择日期"); return; }
+  state.anniversaries.push({ id: uid(), name: name || "纪念日", date });
+  saveState(); renderSettings();
+}
+function deleteAnniversary(id){ state.anniversaries = state.anniversaries.filter(a => a.id!==id); saveState(); renderSettings(); }
+function addCustomTag(){
+  const inp = document.getElementById("c_tag"); const t = inp.value.trim();
+  if(t && !allTags().includes(t)){ state.tags.push(t); saveState(); }
+  inp.value = ""; renderSettings();
+}
+function deleteTag(el){
+  const t = el.dataset.tag;
+  showConfirm(`删除标签「${t}」？\n删除后会从标签列表和已有记录中移除。`, "删除", "取消", () => {
+    state.tags = state.tags.filter(x => x !== t);
+    state.records.forEach(r => { r.tags = (r.tags||[]).filter(x => x !== t); });
+    saveState(); renderSettings(); renderHome();
+  });
+}
+
+/* ============ 标签排序（长按拖动） ============ */
+let drag = { active:false, index:-1, pointerId:null, startY:0 };
+let longPressTimer = null;
+
+function tagManageHTML(){
+  const managed = state.tags.map((t, i) =>
+    `<div class="row drag-row" data-index="${i}" onpointerdown="tagRowDown(event,${i})">
+      <span class="grip">≡</span>
+      <div class="grow">${esc(t)}</div>
+      <button class="btn ghost small" data-tag="${esc(t)}" onclick="deleteTag(this)">删除</button>
+    </div>`).join("");
+  const extra = allTags().filter(t => !state.tags.includes(t)).map(t =>
+    `<div class="row"><div class="grow">${esc(t)} <span class="muted" style="font-size:11px;">（记录中使用）</span></div><button class="btn ghost small" data-tag="${esc(t)}" onclick="deleteTag(this)">删除</button></div>`).join("");
+  return (managed + extra) || `<div class="muted" style="padding:6px 0;">还没有标签</div>`;
+}
+function renderTagManage(){
+  const box = document.getElementById("tagManageBox");
+  if(box) box.innerHTML = tagManageHTML();
+}
+function tagRowDown(e, index){
+  if(e.target.closest('button')) return;
+  drag.pointerId = e.pointerId;
+  drag.startY = e.clientY;
+  drag.index = index;
+  clearTimeout(longPressTimer);
+  longPressTimer = setTimeout(() => { drag.active = true; markDragging(); }, 420);
+  document.addEventListener('pointermove', tagRowMove);
+  document.addEventListener('pointerup', tagRowUp);
+  document.addEventListener('pointercancel', tagRowUp);
+}
+function tagRowMove(e){
+  if(e.pointerId !== drag.pointerId) return;
+  if(!drag.active){
+    if(Math.abs(e.clientY - drag.startY) > 10){ clearTimeout(longPressTimer); longPressTimer = null; }
+    return;
+  }
+  e.preventDefault();
+  const target = indexAtY(e.clientY);
+  if(target >= 0 && target !== drag.index){
+    const moved = state.tags.splice(drag.index, 1)[0];
+    state.tags.splice(target, 0, moved);
+    drag.index = target;
+    renderTagManage();
+    markDragging();
+  }
+}
+function tagRowUp(){
+  clearTimeout(longPressTimer); longPressTimer = null;
+  document.removeEventListener('pointermove', tagRowMove);
+  document.removeEventListener('pointerup', tagRowUp);
+  document.removeEventListener('pointercancel', tagRowUp);
+  if(drag.active){ drag.active = false; saveState(); }
+  renderTagManage();
+}
+function indexAtY(y){
+  const rows = document.querySelectorAll('#tagManageBox .drag-row');
+  for(let i=0;i<rows.length;i++){
+    const r = rows[i].getBoundingClientRect();
+    if(y >= r.top && y <= r.bottom) return i;
+  }
+  return -1;
+}
+function markDragging(){
+  document.querySelectorAll('#tagManageBox .drag-row').forEach((r, i) => {
+    r.classList.toggle('dragging', drag.active && i === drag.index);
+  });
+}
+function exportBackup(){
+  const data = { app:"茹茹舟舟", exportedAt:new Date().toISOString(), records:state.records, anniversaries:state.anniversaries, tags:state.tags };
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type:"application/json" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "茹茹舟舟备份_" + Date.now() + ".json";
+  a.click();
+}
+function importBackup(input){
+  const file = input.files && input.files[0]; if(!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    try{
+      const d = JSON.parse(e.target.result);
+      if(d && Array.isArray(d.records)){
+        if(!confirm("恢复会覆盖当前数据，确定继续？")) return;
+        state.records = d.records; state.anniversaries = d.anniversaries||[]; state.tags = d.tags || d.customTags || [...PRESET_TAGS];
+        saveState(); renderAll(); alert("已恢复 " + state.records.length + " 条记录");
+      } else alert("文件格式不正确");
+    }catch(err){ alert("导入失败：" + err.message); }
+  };
+  reader.readAsText(file);
+  input.value = "";
+}
+
+/* ============ 密码锁 ============ */
+function toggleLock(){
+  if(state.settings.lockEnabled){ state.settings.lockEnabled = false; saveState(); renderSettings(); return; }
+  const pin = prompt("设置一个 4 位数字密码");
+  if(pin && /^\d{4}$/.test(pin)){ state.settings.pin = pin; state.settings.lockEnabled = true; saveState(); renderSettings(); }
+  else if(pin !== null){ alert("请输入 4 位数字"); }
+}
+function tryUnlock(){
+  if(document.getElementById("lockPin").value === state.settings.pin){
+    document.getElementById("lock").classList.add("hidden");
+    document.getElementById("lockPin").value = "";
+  } else { alert("密码错误"); }
+}
+
+/* ============ 通用 ============ */
+function esc(s){ return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+
+/* ============ 确认弹窗 ============ */
+let confirmOkCb = null, confirmCancelCb = null;
+function showConfirm(msg, okLabel, cancelLabel, onOk, onCancel){
+  document.getElementById("confirmMsg").textContent = msg;
+  document.getElementById("confirmOk").textContent = okLabel || "确定";
+  document.getElementById("confirmCancel").textContent = cancelLabel || "取消";
+  confirmOkCb = onOk || null;
+  confirmCancelCb = onCancel || null;
+  document.getElementById("confirmDialog").classList.remove("hidden");
+}
+function hideConfirm(){ document.getElementById("confirmDialog").classList.add("hidden"); }
+function confirmOk(){ hideConfirm(); if(confirmOkCb) confirmOkCb(); }
+function confirmCancel(){ hideConfirm(); if(confirmCancelCb) confirmCancelCb(); }
+function renderAll(){ renderHome(); renderCalendar(); renderSettings(); }
+
+/* ============ 启动 ============ */
+loadState();
+if(state.settings.lockEnabled && state.settings.pin){
+  document.getElementById("lock").classList.remove("hidden");
+} else {
+  document.getElementById("lock").classList.add("hidden");
+}
+switchTab("home");
+</script>
+</body>
+</html>
